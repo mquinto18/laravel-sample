@@ -9,35 +9,33 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeEmail extends Mailable
+class WelcomeAppointmentEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $title;
-    public $category;
-    public $price;
     public $subject;
+    public $name;
+    public $address;
+    public $email;
+    public $description;
+    public $date;
     public $qrcode;
-    /**
-     * Create a new message instance.
-     */
-    public function __construct($subject, $title, $category, $price, $qrcode)
+
+    public function __construct($subject, $name, $address, $email, $description, $date, $qrcode)
     {
         $this->subject = $subject;
-        $this->title = $title;
-        $this->category = $category;
-        $this->price = $price;
+        $this->name = $name;
+        $this->address = $address;
+        $this->email = $email;
+        $this->description = $description;
+        $this->date = $date;
         $this->qrcode = $qrcode;
     }
 
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
+    public function build()
     {
-        return new Envelope(
-            subject: $this->subject,
-        );
+        return $this->view('emails.appointment')
+                    ->subject($this->subject);
     }
 
     /**
@@ -46,7 +44,7 @@ class WelcomeEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail-template.welcome-mail',
+            view: 'mail-template.appointment-email',
         );
     }
 
