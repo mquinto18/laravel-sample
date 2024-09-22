@@ -8,12 +8,13 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\EmailController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
+// Allow public access to the dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified', 'user'])->name('dashboard');
+})->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {

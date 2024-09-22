@@ -2,6 +2,18 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+        <div>
+            <a href="/" class='flex items-center font-medium'>
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <p>St Benidict</p>
+            </a>
+        </div>
+
+        <div class='my-5'>
+            <h1 class='text-[25px] font-medium'>Create your account</h1>
+            <a href="" class=''>Join us and get started!</a>
+        </div>
+
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -40,13 +52,14 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
+            <x-primary-button class="flex justify-center w-full bg-[#6B5EE6]">
                 {{ __('Register') }}
             </x-primary-button>
+        </div>
+
+        <div class='flex gap-2 justify-center text-sm mt-3'>
+            <p>Already have an account?</p>
+            <a href="{{ route('login') }}" class='text-[#6B5EE6]'>Login Now</a>
         </div>
     </form>
 </x-guest-layout>

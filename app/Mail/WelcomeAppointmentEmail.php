@@ -19,9 +19,9 @@ class WelcomeAppointmentEmail extends Mailable
     public $email;
     public $description;
     public $date;
-    public $qrcode;
+    public $qrcodeUrl;
 
-    public function __construct($subject, $name, $address, $email, $description, $date, $qrcode)
+    public function __construct($subject, $name, $address, $email, $description, $date, $qrcodeUrl)
     {
         $this->subject = $subject;
         $this->name = $name;
@@ -29,7 +29,7 @@ class WelcomeAppointmentEmail extends Mailable
         $this->email = $email;
         $this->description = $description;
         $this->date = $date;
-        $this->qrcode = $qrcode;
+        $this->qrcode = $qrcodeUrl;
     }
 
     public function build()

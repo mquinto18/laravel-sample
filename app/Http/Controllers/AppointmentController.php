@@ -19,9 +19,9 @@ class AppointmentController extends Controller
         return view('admin.appointment.create');
     }
 
-    public function sendAppointmentEmail($toEmail, $subject, $name, $address, $email, $description, $date,  $qrcode){
+    public function sendAppointmentEmail($toEmail, $subject, $name, $address, $email, $description, $date,  $qrcodeUrl){
         try{
-            Mail::to($toEmail)->send(new WelcomeAppointmentEmail($subject, $name, $address, $email, $description, $date, $qrcode));
+            Mail::to($toEmail)->send(new WelcomeAppointmentEmail($subject, $name, $address, $email, $description, $date, $qrcodeUrl));
 
             return response()->json(['status' => 'Email sent Successfully']);
         }catch(Exception $e){

@@ -11,6 +11,9 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                skyblue: '#5EA7E6',
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
